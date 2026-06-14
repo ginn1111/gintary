@@ -317,7 +317,7 @@
     {
       "id": "ebebf0056ca2",
       "name": "Tech Daily Update",
-      "prompt": "Daily at 8:00 AM, gather last 24h high-signal news on software engineering/devtools, cybersecurity, broad tech, and cryptocurrency from reputable/primary sources, summarize 10\u201315 non-duplicate items with headline, 1\u20132 sentence summary, why it matters, and source link, grouped by section, neutral tone, then post to Slack channel #[CHANNEL_NAME].",
+      "prompt": "Daily at 8:00 AM, gather last 24h high-signal news on software engineering/devtools, cybersecurity, broad tech, and cryptocurrency from reputable/primary sources. Summarize 10\u201315 non-duplicate items with headline, 1\u20132 sentence summary, why it matters, and source link. Group by section. Use neutral tone. Deliver to Slack home channel.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -352,5 +352,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-06-15T01:04:08.267451+07:00"
+  "updated_at": "2026-06-15T01:09:09.115269+07:00"
 }

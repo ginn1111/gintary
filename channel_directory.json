@@ -1,7 +1,14 @@
 {
-  "updated_at": "2026-06-15T01:03:08.186738",
+  "updated_at": "2026-06-15T01:13:09.685878",
   "platforms": {
-    "slack": [],
+    "slack": [
+      {
+        "id": "D0BA17GPW1M:1781460369.516429",
+        "name": "D0BA17GPW1M / topic 1781460369.516429",
+        "type": "dm",
+        "thread_id": "1781460369.516429"
+      }
+    ],
     "telegram": [],
     "discord": [],
     "whatsapp": [],

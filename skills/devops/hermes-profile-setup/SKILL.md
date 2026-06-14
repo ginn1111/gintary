@@ -160,6 +160,7 @@ cronjob(
 | Daily Follow-Up Scan | Weekdays 09:00 UTC (16:00 +7) | Find threads waiting on response |
 | End-of-Day Wrap | Weekdays 10:30 UTC (17:30 +7) | Completed/open/risks |
 | Weekly Review | Friday 09:00 UTC (16:00 +7) | Week summary, next priorities |
+| Tech Daily Update | Weekdays 09:00 local | Gather 24h news, post to Slack |
 
 ### Cron prompt structure:
 - Start with "You are [profile identity]..."
@@ -167,6 +168,8 @@ cronjob(
 - Handle missing integrations gracefully ("No email CLI — note limitation")
 - Only use `enabled_toolsets` that match the task (ideally just `session_search` for secretary tasks)
 - Set `workdir` for consistent context injection
+- **`deliver` field vs. prompt instructions**: The `deliver` field handles WHERE the final output goes (e.g. `"slack"` posts to the home channel DM). Do NOT add redundant instructions like "then post to Slack channel" in the prompt — the prompt should focus on WHAT to produce (the content), and `deliver` handles routing. Redundant instructions create confusion when the channel isn't specified.
+- **No placeholder text**: Never use placeholder tokens like `#[CHANNEL_NAME]`, `[YOUR_CHANNEL]`, or similar unresolved variables in cron prompts. These will never be filled in — cron jobs have no user interaction. If a channel is needed, use the `deliver` field or hardcode it in the prompt.
 
 ## Step 7 — Permission Model
 
@@ -210,6 +213,13 @@ Define commands in SOUL.md for user-facing invocation:
 - **Config file edits blocked**: NEVER try `patch` or `write_file` on `config.yaml`. Always use `hermes config set`.
 - **HOME env var is sandboxed**: Inside a profile session, `~` resolves to `~/.hermes/profiles/<name>/home/`. Use `pwd.getpwuid(os.getuid()).pw_dir` in Python to find real user home.
 - **Cron jobs cannot ask questions**: Prompts must be fully self-contained. Include `{{time}}` and `{{date}}` for temporal context.
+- **`deliver` field + prompt redundancy**: Setting `deliver: "slack"` (or any platform) handles output routing automatically. The prompt should NOT also say "post to [platform]" — it creates conflicting instructions and leaves undefined variables (e.g. `#[CHANNEL_NAME]`) that the job cannot resolve.
+- **No unresolved placeholders**: Never leave tokens like `#[CHANNEL_NAME]`, `[TEAM_NAME]`, `<INSERT_HERE>` in cron prompts. Cron jobs run headlessly — no user sees the prompt to fill in blanks. The job will fail or produce confused output.
+- **Debugging cron jobs that don't complete**: When `cronjob(action='run')` returns success but `last_run_at` stays null:
+  1. Check `errors.log` for session ID matching `cron_<job_id>_<timestamp>`
+  2. Check `cron/jobs.json` for the job's `state`, `last_error`, `last_status`
+  3. Check `cron/output/<job_id>/` for generated output
+  4. The job may still be running — try a `cronjob(action='list')` re-read to see updated state
 - **Missing integrations**: Design cron prompts to gracefully report "missing [tool] — cannot perform [function]" rather than failing silently.
 - **Fresh profile has no skills/memories**: Create user profile, memory schema, and SOUL.md before cron jobs so they have context.
 - **Memory char limits**: User profile is 1375 chars, generic memory is 2200 chars. Stay within limits when saving schema.
