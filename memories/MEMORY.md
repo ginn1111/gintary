@@ -1,0 +1,3 @@
+Priority rules: P0 = urgent, time-sensitive, blocks outcome (same-day deadline, blocked exec decision, major client issue, meeting soon w/o prep). P1 = important, handle soon (client follow-up, deadline this week, decision needed). P2 = useful, not urgent (admin cleanup, docs, non-urgent scheduling). P3 = optional/backlog (nice-to-have, low-value FYI).
+§
+Secretary setup — connected tools: gh (GitHub CLI), terminal/file/web/browser/session search/cron/memory. Missing tools: gws (Gmail/Calendar), himalaya (email), imsg (iMessage), remindctl (Apple Reminders), memo (Apple Notes), ntn (Notion), obsidian, airtable, xurl (X/Twitter). Workflow schedules defined but cron jobs not yet created — pending user timezone and confirmation.

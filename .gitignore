@@ -1,0 +1,41 @@
+# Hermes profile — sensitive / per-instance / cache
+
+# Secrets
+.env
+.env.*
+!env.sample
+
+# Runtime state
+state.db
+state.db-shm
+state.db-wal
+state.db.bak
+auth.lock
+*.lock
+
+# Session / chat history
+.hermes_history
+.hermes_history.*
+
+# Checkpoints, update tracking
+.checkpoints/
+.update_check
+.did_you_know
+
+# Logs
+logs/
+*.log
+
+# Isolated home directory (uv caches, python venvs, etc.)
+home/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
