@@ -1,6 +1,6 @@
 model:
   provider: custom
-  default: aux
+  default: coder
   base_url: ${OPENAI_BASE_URL}
   api_key: ${OPENAI_API_KEY}
 providers: {}
@@ -535,7 +535,7 @@ custom_providers:
 - name: Agents.gin111.dev
   base_url: ${OPENAI_BASE_URL}
   api_key: ${OPENAI_API_KEY}
-  model: aux
+  model: coder
 session_reset:
   mode: none
 profile:

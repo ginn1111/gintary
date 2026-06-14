@@ -20,16 +20,16 @@
       "schedule_display": "0 2 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 1
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:10.206438+07:00",
-      "next_run_at": "2026-06-15T00:04:21.601325+07:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-06-15T02:00:00+07:00",
+      "last_run_at": "2026-06-15T00:59:33.953438+07:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "local",
@@ -313,7 +313,44 @@
         "session_search"
       ],
       "workdir": "/Users/gin"
+    },
+    {
+      "id": "ebebf0056ca2",
+      "name": "Tech Daily Update",
+      "prompt": "Daily at 8:00 AM, gather last 24h high-signal news on software engineering/devtools, cybersecurity, broad tech, and cryptocurrency from reputable/primary sources, summarize 10\u201315 non-duplicate items with headline, 1\u20132 sentence summary, why it matters, and source link, grouped by section, neutral tone, then post to Slack channel #[CHANNEL_NAME].",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1-5",
+        "display": "0 9 * * 1-5"
+      },
+      "schedule_display": "0 9 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-15T00:57:24.457252+07:00",
+      "next_run_at": "2026-06-15T09:00:00+07:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "slack",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-06-15T00:04:21.601795+07:00"
+  "updated_at": "2026-06-15T01:04:08.267451+07:00"
 }
