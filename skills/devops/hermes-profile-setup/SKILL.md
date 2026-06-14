@@ -224,3 +224,4 @@ Define commands in SOUL.md for user-facing invocation:
 - **Fresh profile has no skills/memories**: Create user profile, memory schema, and SOUL.md before cron jobs so they have context.
 - **Memory char limits**: User profile is 1375 chars, generic memory is 2200 chars. Stay within limits when saving schema.
 - **Tool env vars**: Each CLI may use a different env var name — set both the canonical name and the CLI-specific name in `.env`. See `skill_view('notion', 'references/hermes-profile-env-setup.md')` for example.
+- **Cron job stuck / won't start new run**: When a run is in progress, `cronjob(action='run')` returns `success: true` but the scheduler silently skips it (`already running`). See `references/cron-troubleshooting.md` for debug steps and manual fallback.

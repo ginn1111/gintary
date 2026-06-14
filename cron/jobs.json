@@ -32,11 +32,9 @@
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "local",
+      "deliver": "slack",
       "origin": null,
-      "enabled_toolsets": [
-        "session_search"
-      ],
+      "enabled_toolsets": ["session_search"],
       "workdir": "/Users/gin"
     },
     {
@@ -73,9 +71,7 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": [
-        "session_search"
-      ],
+      "enabled_toolsets": ["session_search"],
       "workdir": "/Users/gin"
     },
     {
@@ -112,9 +108,7 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": [
-        "session_search"
-      ],
+      "enabled_toolsets": ["session_search"],
       "workdir": "/Users/gin"
     },
     {
@@ -151,9 +145,7 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": [
-        "session_search"
-      ],
+      "enabled_toolsets": ["session_search"],
       "workdir": "/Users/gin"
     },
     {
@@ -190,18 +182,14 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": [
-        "session_search"
-      ],
+      "enabled_toolsets": ["session_search"],
       "workdir": "/Users/gin"
     },
     {
       "id": "358ea20fe2de",
       "name": "PR/MR Daily Follow-Up Scan",
       "prompt": "You are Hermes Secretary. Run follow-up scan.\n\nCurrent time: {{time}}, {{date}}.\n\n1. List all open PR/MRs.\n2. For each PR/MR, check if it's \"active\":\n   - New commits since last review\n   - Awaiting review (no review yet, or changes requested but new commits pushed)\n   - Updated in last 7 days\n3. For each active PR/MR, delegate review to the ginreview profile:\n   Use `delegate_task` with goal=\"Review this PR/MR: [PR_URL]. Check code quality, correctness, security, and alignment with project standards.\"\n4. Report results: which PRs were reviewed, which were skipped (not active), and any review summaries returned.\n\nOnly review each PR once per day \u2014 avoid re-reviewing if already reviewed today.\nDo not modify any git state. Read-only.\nKeep brief.",
-      "skills": [
-        "hermes-agent"
-      ],
+      "skills": ["hermes-agent"],
       "skill": "hermes-agent",
       "model": null,
       "provider": null,
@@ -224,12 +212,12 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:26.941937+07:00",
-      "next_run_at": "2026-06-15T09:00:00+07:00",
+      "next_run_at": "2026-06-15T13:45:15.910307+07:00",
       "last_run_at": null,
       "last_status": null,
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "local",
+      "deliver": "slack",
       "origin": null,
       "enabled_toolsets": [
         "session_search"
@@ -268,7 +256,7 @@
       "last_status": null,
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "local",
+      "deliver": "slack",
       "origin": null,
       "enabled_toolsets": [
         "session_search"
@@ -307,7 +295,7 @@
       "last_status": null,
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "local",
+      "deliver": "slack",
       "origin": null,
       "enabled_toolsets": [
         "session_search"
@@ -334,7 +322,7 @@
       "schedule_display": "0 9 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 1
       },
       "enabled": true,
       "state": "scheduled",
@@ -342,8 +330,8 @@
       "paused_reason": null,
       "created_at": "2026-06-15T00:57:24.457252+07:00",
       "next_run_at": "2026-06-15T09:00:00+07:00",
-      "last_run_at": null,
-      "last_status": null,
+      "last_run_at": "2026-06-15T01:23:06.006436+07:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "slack",
@@ -352,5 +340,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-06-15T01:09:09.115269+07:00"
+  "updated_at": "2026-06-15T13:45:15.910588+07:00"
 }

@@ -39,3 +39,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
+auth.json
+_snapshot.*
+sessions
