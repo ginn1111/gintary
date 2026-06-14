@@ -102,7 +102,29 @@ hermes config set agent.personalities.secretary "You are Hermes Secretary..."
 
 DO NOT attempt `patch` or `write_file` on `config.yaml` — they are refused with "Agent cannot modify security-sensitive configuration."
 
-## Step 4 — Create Memory Schema
+## Step 4 — Configure Tool .env Vars
+
+Each tool CLI expects specific env var names. The profile's `.env` at `~/.hermes/profiles/<name>/.env` is loaded by Hermes every session.
+
+### Common tool env vars
+
+```bash
+# Notion
+NOTION_API_KEY=***                        # Hermes skills / curl
+NOTION_API_TOKEN=***        # same value — ntn reads this
+NOTION_KEYRING=0
+
+# GitHub (uses gh CLI — no env var needed, uses ~/.config/gh/)
+```
+
+### Rules
+
+- **Set both aliases** when a tool uses a different env var name (e.g. `NOTION_API_KEY` vs `NOTION_API_TOKEN`)
+- **Heredoc pitfall**: single-quoted delimiters prevent expansion: `cat >> .env << 'EOF'` writes literal `$VAR` not its value. Use unquoted `cat >> .env << EOF`
+- **Terminal masks secrets** — verify tool setup from `execute_code` with Python `subprocess` and explicit env dict
+- **PATH**: binary at `~/.hermes/profiles/<name>/home/bin/` is in the sandboxed PATH; symlink to `~/.local/bin/` for system-wide access
+
+## Step 5 — Create Memory Schema
 
 Save durable facts using the memory tool:
 
@@ -111,7 +133,7 @@ Save durable facts using the memory tool:
 - Priority rules: P0-P3 definitions
 - Connected tools inventory
 
-## Step 5 — Set Up Cron Workflows
+## Step 6 — Set Up Cron Workflows
 
 Pattern for each cron job:
 
@@ -146,7 +168,7 @@ cronjob(
 - Only use `enabled_toolsets` that match the task (ideally just `session_search` for secretary tasks)
 - Set `workdir` for consistent context injection
 
-## Step 6 — Permission Model
+## Step 7 — Permission Model
 
 Define three tiers:
 
@@ -156,7 +178,7 @@ Define three tiers:
 | Approval required | Send email/chat, create/accept/decline invites, edit shared docs, submit forms, book travel, purchase, delete anything |
 | Forbidden | git push remote, reveal credentials, legal/financial/medical/HR decisions, change security, commit user to contracts |
 
-## Step 7 — Priority Classification
+## Step 8 — Priority Classification
 
 Standard secretary priority schema:
 
@@ -167,7 +189,7 @@ Standard secretary priority schema:
 | P2 | Useful, not urgent | Admin cleanup, docs, non-urgent scheduling |
 | P3 | Optional/backlog | Nice-to-have, low-value FYI |
 
-## Step 8 — Command Interface
+## Step 9 — Command Interface
 
 Define commands in SOUL.md for user-facing invocation:
 
@@ -191,3 +213,4 @@ Define commands in SOUL.md for user-facing invocation:
 - **Missing integrations**: Design cron prompts to gracefully report "missing [tool] — cannot perform [function]" rather than failing silently.
 - **Fresh profile has no skills/memories**: Create user profile, memory schema, and SOUL.md before cron jobs so they have context.
 - **Memory char limits**: User profile is 1375 chars, generic memory is 2200 chars. Stay within limits when saving schema.
+- **Tool env vars**: Each CLI may use a different env var name — set both the canonical name and the CLI-specific name in `.env`. See `skill_view('notion', 'references/hermes-profile-env-setup.md')` for example.

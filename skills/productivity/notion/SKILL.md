@@ -437,6 +437,17 @@ Headings 5/6 collapse to H4. Multiple `>` lines render as separate quote blocks 
 | One-off API exploration | `ntn api ...` | curl |
 | Build a sync / webhook / agent tool hosted by Notion | `ntn workers ...` | WSL2 + `ntn workers ...` |
 
+## Hermes Profile Integration
+
+When running inside a Hermes profile, the .env file lives at `~/.hermes/profiles/<name>/.env` (not the global `~/.hermes/.env`). See `references/hermes-profile-env-setup.md` for full setup and verification details.
+
+### Pitfalls
+
+- **Heredoc with single quotes** prevents env var expansion when writing .env — always use unquoted delimiters: `cat >> .env << EOF`.
+- **Terminal masks API keys** in output — use `execute_code` with Python `subprocess` for verification.
+- **ntn reads NOTION_API_TOKEN**, not NOTION_API_KEY. Set both in .env.
+- **`--data` not `--json`**: ntn uses `--data <json>` for POST bodies, not `--json -`.
+
 ## Notes
 
 - Page/database IDs are UUIDs (with or without dashes — both accepted).

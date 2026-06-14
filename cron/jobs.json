@@ -3,7 +3,7 @@
     {
       "id": "1f0a2c34aefe",
       "name": "Morning Brief",
-      "prompt": "You are Hermes Secretary, an executive assistant agent.\n\nProduce the user's morning briefing. Today is {{date}} {{time}}.\n\nUsing available tools only (no email/calendar CLI available):\n1. Check today's date and time.\n2. If session_search available, check recent sessions for context.\n3. Produce a Morning Brief using this template:\n- Calendar today: [no calendar CLI \u2014 note this limitation]\n- Top priorities: [infer from recent context or state none]\n- Urgent messages: [no email CLI \u2014 note this limitation]\n- Follow-ups due: [none known]\n- Meeting prep needed: [none known]\n- Risks / conflicts: [none identified]\n- Recommended first action: [general suggestion]\n\nNote any missing tools that would improve the briefing. Deliver the brief directly to the user.",
+      "prompt": "You are Hermes Secretary, executive assistant agent. Today is {{date}} {{time}}. Produce a concise Morning Brief using only available tools: check current date/time if possible, search recent sessions if `session_search` is available, do not invent calendar/email/message/task data, and state unavailable tools plainly. Output exactly: ## Morning Brief \u2014 {{date}}; - Calendar today: [summarize if calendar access exists, else \u201cNo calendar access available.\u201d]; - Top priorities: [infer from recent session context, else \u201cNone known from available context.\u201d]; - Urgent messages: [summarize if email/message access exists, else \u201cNo email or message access available.\u201d]; - Follow-ups due: [known items or \u201cNone known.\u201d]; - Meeting prep needed: [known prep or \u201cNone known.\u201d]; - Risks / conflicts: [identified risks/conflicts or \u201cNone identified.\u201d]; - Recommended first action: [one concrete low-risk action]; Missing tools that would improve this brief: [list useful unavailable tools]. Deliver final brief directly, no process notes except tool limitations.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -27,7 +27,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:10.206438+07:00",
-      "next_run_at": "2026-06-15T02:00:00+07:00",
+      "next_run_at": "2026-06-15T00:04:21.601325+07:00",
       "last_run_at": null,
       "last_status": null,
       "last_error": null,
@@ -61,9 +61,9 @@
         "times": null,
         "completed": 0
       },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-14T23:54:08.285546+07:00",
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:11.213791+07:00",
       "next_run_at": "2026-06-15T02:00:00+07:00",
@@ -100,9 +100,9 @@
         "times": null,
         "completed": 0
       },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-14T23:54:12.768879+07:00",
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:12.231700+07:00",
       "next_run_at": "2026-06-14T18:33:12.234608+07:00",
@@ -139,9 +139,9 @@
         "times": null,
         "completed": 0
       },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-14T23:54:15.118637+07:00",
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:24.917712+07:00",
       "next_run_at": "2026-06-14T18:28:24.917940+07:00",
@@ -178,9 +178,9 @@
         "times": null,
         "completed": 0
       },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-14T23:54:16.384085+07:00",
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:25.929739+07:00",
       "next_run_at": "2026-06-14T18:33:25.930285+07:00",
@@ -197,10 +197,12 @@
     },
     {
       "id": "358ea20fe2de",
-      "name": "Daily Follow-Up Scan",
-      "prompt": "You are Hermes Secretary. Run follow-up scan.\n\nCurrent time: {{time}}, {{date}}.\n\nNo email CLI connected. Cannot find threads waiting on response.\n- Check session_search for any recent tasks or follow-ups discussed.\n- Report any open items from recent conversations.\n\nIf nothing pending, say: \"No pending follow-ups tracked. No email integration \u2014 cannot scan threads.\"\n\nKeep brief.",
-      "skills": [],
-      "skill": null,
+      "name": "PR/MR Daily Follow-Up Scan",
+      "prompt": "You are Hermes Secretary. Run follow-up scan.\n\nCurrent time: {{time}}, {{date}}.\n\n1. List all open PR/MRs.\n2. For each PR/MR, check if it's \"active\":\n   - New commits since last review\n   - Awaiting review (no review yet, or changes requested but new commits pushed)\n   - Updated in last 7 days\n3. For each active PR/MR, delegate review to the ginreview profile:\n   Use `delegate_task` with goal=\"Review this PR/MR: [PR_URL]. Check code quality, correctness, security, and alignment with project standards.\"\n4. Report results: which PRs were reviewed, which were skipped (not active), and any review summaries returned.\n\nOnly review each PR once per day \u2014 avoid re-reviewing if already reviewed today.\nDo not modify any git state. Read-only.\nKeep brief.",
+      "skills": [
+        "hermes-agent"
+      ],
+      "skill": "hermes-agent",
       "model": null,
       "provider": null,
       "base_url": null,
@@ -237,7 +239,7 @@
     {
       "id": "ea344dab72cf",
       "name": "End-of-Day Wrap",
-      "prompt": "You are Hermes Secretary. Produce end-of-day wrap.\n\nCurrent time: {{time}}, {{date}} (17:30 local).\n\nUsing session_search, review recent activity today. Produce an End-of-Day Wrap:\n- Completed: [from recent sessions]\n- Still open: [from recent sessions]\n- Waiting on others: [none known]\n- Risks: [none identified]\n- Tomorrow's first actions: [suggest based on context]\n\nNote any missing integrations that would improve the report.",
+      "prompt": "You are Hermes Secretary. Produce end-of-day wrap.\n\nCurrent time: {{time}}, {{date}} (18:00 local).\n\nUsing session_search, review recent activity today. Produce an End-of-Day Wrap:\n- Completed: [from recent sessions]\n- Still open: [from recent sessions]\n- Waiting on others: [none known]\n- Risks: [none identified]\n- Tomorrow's first actions: [suggest based on context]\n\nNote any missing integrations that would improve the report.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -313,5 +315,5 @@
       "workdir": "/Users/gin"
     }
   ],
-  "updated_at": "2026-06-14T18:18:28.975912+07:00"
+  "updated_at": "2026-06-15T00:04:21.601795+07:00"
 }

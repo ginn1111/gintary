@@ -1,3 +1,5 @@
 Priority rules: P0 = urgent, time-sensitive, blocks outcome (same-day deadline, blocked exec decision, major client issue, meeting soon w/o prep). P1 = important, handle soon (client follow-up, deadline this week, decision needed). P2 = useful, not urgent (admin cleanup, docs, non-urgent scheduling). P3 = optional/backlog (nice-to-have, low-value FYI).
 §
-Secretary setup — connected tools: gh (GitHub CLI), terminal/file/web/browser/session search/cron/memory. Missing tools: gws (Gmail/Calendar), himalaya (email), imsg (iMessage), remindctl (Apple Reminders), memo (Apple Notes), ntn (Notion), obsidian, airtable, xurl (X/Twitter). Workflow schedules defined but cron jobs not yet created — pending user timezone and confirmation.
+Connected tools: gh (GitHub CLI), ntn (Notion CLI), terminal/file/web/browser/session search/cron/memory. Missing tools: gws (Gmail/Calendar), himalaya (email), imsg (iMessage), remindctl (Apple Reminders), memo (Apple Notes), obsidian, airtable, xurl (X/Twitter).
+§
+Notion integration: ntn CLI installed at ~/.local/bin/ntn (symlinked from profile home/bin). NOTION_API_TOKEN set in profile .env (same as NOTION_API_KEY). NOTION_KEYRING=0. Curl + ntn both verified working against Notion API. Token is a Notion Internal Integration token (ntn_ prefix) — integration needs pages shared with it to access them. Full search API returns results.
