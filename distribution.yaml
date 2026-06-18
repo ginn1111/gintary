@@ -1,13 +1,13 @@
 name: gintary
-version: 1.0.1
+version: 1.0.2
 description: Autonomous secretary assistant
-hermes_requires: '>=0.12.0'
+hermes_requires: ">=0.12.0"
 author: Gin
 license: MIT
 env_requires:
-- name: OPENAI_API_KEY
-  description: OpenAI API key (for model access)
-- name: OPENAI_BASE_URL
-  description: OpenAI base url (for model access)
+  - name: OPENAI_API_KEY
+    description: OpenAI API key (for model access)
+  - name: OPENAI_BASE_URL
+    description: OpenAI base url (for model access)
 source: https://github.com/ginn1111/gintary
-installed_at: '2026-06-15T02:18:14+00:00'
+installed_at: "2026-06-15T02:18:14+00:00"

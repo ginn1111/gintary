@@ -20,21 +20,23 @@
       "schedule_display": "0 2 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:10.206438+07:00",
-      "next_run_at": "2026-06-15T02:00:00+07:00",
-      "last_run_at": "2026-06-15T00:59:33.953438+07:00",
+      "next_run_at": "2026-06-19T02:00:00+07:00",
+      "last_run_at": "2026-06-16T04:43:42.393864+07:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "slack",
       "origin": null,
-      "enabled_toolsets": ["session_search"],
+      "enabled_toolsets": [
+        "session_search"
+      ],
       "workdir": "/Users/gin"
     },
     {
@@ -71,7 +73,9 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": ["session_search"],
+      "enabled_toolsets": [
+        "session_search"
+      ],
       "workdir": "/Users/gin"
     },
     {
@@ -108,7 +112,9 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": ["session_search"],
+      "enabled_toolsets": [
+        "session_search"
+      ],
       "workdir": "/Users/gin"
     },
     {
@@ -145,7 +151,9 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": ["session_search"],
+      "enabled_toolsets": [
+        "session_search"
+      ],
       "workdir": "/Users/gin"
     },
     {
@@ -182,14 +190,18 @@
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
-      "enabled_toolsets": ["session_search"],
+      "enabled_toolsets": [
+        "session_search"
+      ],
       "workdir": "/Users/gin"
     },
     {
       "id": "358ea20fe2de",
       "name": "PR/MR Daily Follow-Up Scan",
       "prompt": "You are Hermes Secretary. Run follow-up scan.\n\nCurrent time: {{time}}, {{date}}.\n\n1. List all open PR/MRs.\n2. For each PR/MR, check if it's \"active\":\n   - New commits since last review\n   - Awaiting review (no review yet, or changes requested but new commits pushed)\n   - Updated in last 7 days\n3. For each active PR/MR, delegate review to the ginreview profile:\n   Use `delegate_task` with goal=\"Review this PR/MR: [PR_URL]. Check code quality, correctness, security, and alignment with project standards.\"\n4. Report results: which PRs were reviewed, which were skipped (not active), and any review summaries returned.\n\nOnly review each PR once per day \u2014 avoid re-reviewing if already reviewed today.\nDo not modify any git state. Read-only.\nKeep brief.",
-      "skills": ["hermes-agent"],
+      "skills": [
+        "hermes-agent"
+      ],
       "skill": "hermes-agent",
       "model": null,
       "provider": null,
@@ -205,17 +217,17 @@
       "schedule_display": "0 9 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:26.941937+07:00",
-      "next_run_at": "2026-06-15T13:45:15.910307+07:00",
-      "last_run_at": null,
-      "last_status": null,
-      "last_error": null,
+      "next_run_at": "2026-06-19T09:00:00+07:00",
+      "last_run_at": "2026-06-16T10:46:44.894479+07:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: [Errno 32] Broken pipe",
       "last_delivery_error": null,
       "deliver": "slack",
       "origin": null,
@@ -244,17 +256,17 @@
       "schedule_display": "30 10 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-14T18:18:27.956756+07:00",
-      "next_run_at": "2026-06-15T10:30:00+07:00",
-      "last_run_at": null,
-      "last_status": null,
-      "last_error": null,
+      "next_run_at": "2026-06-19T10:30:00+07:00",
+      "last_run_at": "2026-06-16T11:29:02.729494+07:00",
+      "last_status": "error",
+      "last_error": "TimeoutError: Cron job 'End-of-Day Wrap' idle for 1001s (limit 600s) \u2014 last activity: waiting for provider response (streaming)",
       "last_delivery_error": null,
       "deliver": "slack",
       "origin": null,
@@ -322,17 +334,17 @@
       "schedule_display": "0 9 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-15T00:57:24.457252+07:00",
-      "next_run_at": "2026-06-15T09:00:00+07:00",
-      "last_run_at": "2026-06-15T01:23:06.006436+07:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-06-19T09:00:00+07:00",
+      "last_run_at": "2026-06-16T10:02:56.903359+07:00",
+      "last_status": "error",
+      "last_error": "TimeoutError: Cron job 'Tech Daily Update' idle for 1024s (limit 600s) \u2014 last activity: concurrent tools running (242s, 3 remaining: web_extract, web_search, web_search)",
       "last_delivery_error": null,
       "deliver": "slack",
       "origin": null,
@@ -340,5 +352,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-06-15T13:45:15.910588+07:00"
+  "updated_at": "2026-06-18T23:15:21.088510+07:00"
 }
