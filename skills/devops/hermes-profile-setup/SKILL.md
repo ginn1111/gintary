@@ -135,6 +135,8 @@ Save durable facts using the memory tool:
 
 ## Step 6 — Set Up Cron Workflows
 
+**Pitfall**: `repeat:false` disables recurrence; omit `repeat` entirely for forever schedule.
+
 Pattern for each cron job:
 
 ```python
@@ -215,6 +217,7 @@ Define commands in SOUL.md for user-facing invocation:
 - **Cron jobs cannot ask questions**: Prompts must be fully self-contained. Include `{{time}}` and `{{date}}` for temporal context.
 - **`deliver` field + prompt redundancy**: Setting `deliver: "slack"` (or any platform) handles output routing automatically. The prompt should NOT also say "post to [platform]" — it creates conflicting instructions and leaves undefined variables (e.g. `#[CHANNEL_NAME]`) that the job cannot resolve.
 - **No unresolved placeholders**: Never leave tokens like `#[CHANNEL_NAME]`, `[TEAM_NAME]`, `<INSERT_HERE>` in cron prompts. Cron jobs run headlessly — no user sees the prompt to fill in blanks. The job will fail or produce confused output.
+- **`repeat` param gotcha**: Passing `repeat=false` (or `repeat: 1`) on a cron schedule creates a one-shot job, not recurring. For recurring schedules (cron expressions), **omit `repeat` entirely** — it defaults to `"forever"`. Only pass `repeat` for one-shot jobs.
 - **Debugging cron jobs that don't complete**: When `cronjob(action='run')` returns success but `last_run_at` stays null:
   1. Check `errors.log` for session ID matching `cron_<job_id>_<timestamp>`
   2. Check `cron/jobs.json` for the job's `state`, `last_error`, `last_status`

@@ -13,8 +13,7 @@ agent:
   image_input_mode: auto
   max_turns: 150
   personalities:
-    secretary:
-      "You are Hermes Secretary, executive assistant agent \u2014 swift,\
+    secretary: "You are Hermes Secretary, executive assistant agent \u2014 swift,\
       \ precise, diplomatic, discreet. Professional tone. Reduce friction, protect\
       \ focus, organize information. Output in structured markdown. Templates: Morning\
       \ Brief, Meeting Brief, End-of-Day Wrap, Follow-Up Draft. Commands: /brief,\
@@ -122,8 +121,8 @@ bedrock:
     provider_filter: []
     refresh_interval: 3600
   guardrail:
-    guardrail_identifier: ""
-    guardrail_version: ""
+    guardrail_identifier: ''
+    guardrail_version: ''
     stream_processing_mode: async
     trace: disabled
   region: ""
@@ -271,12 +270,12 @@ display:
   runtime_footer:
     enabled: false
     fields:
-      - model
-      - context_pct
-      - cwd
+    - model
+    - context_pct
+    - cwd
   show_cost: false
   show_reasoning: false
-  skin: default
+  skin: mono
   streaming: false
   timestamps: false
   tool_preview_length: 0
@@ -305,22 +304,24 @@ hooks_auto_accept: false
 human_delay:
   max_ms: 2500
   min_ms: 800
-  mode: "off"
+  mode: 'off'
 kanban:
   auto_decompose: true
   auto_decompose_per_tick: 3
-  default_assignee: ""
+  default_assignee: ''
   dispatch_in_gateway: true
   dispatch_interval_seconds: 60
   dispatch_stale_timeout_seconds: 14400
   failure_limit: 2
   max_in_progress_per_profile: null
-  orchestrator_profile: ""
+  orchestrator_profile: ''
   worker_log_backup_count: 1
   worker_log_rotate_bytes: 2097152
 known_plugin_toolsets:
   cli:
-    - spotify
+  - spotify
+  slack:
+  - spotify
 logging:
   backup_count: 3
   level: INFO
@@ -332,13 +333,13 @@ lsp:
   wait_mode: document
   wait_timeout: 5.0
 matrix:
-  allowed_rooms: ""
-  free_response_rooms: ""
+  allowed_rooms: ''
+  free_response_rooms: ''
   require_mention: true
 mattermost:
-  allowed_channels: ""
+  allowed_channels: ''
   channel_prompts: {}
-  free_response_channels: ""
+  free_response_channels: ''
   require_mention: true
 max_concurrent_sessions: null
 memory:
@@ -374,31 +375,52 @@ paste_collapse_threshold_fallback: 5
 personalities: {}
 platform_toolsets:
   cli:
-    - browser
-    - clarify
-    - code_execution
-    - computer_use
-    - cronjob
-    - delegation
-    - file
-    - image_gen
-    - memory
-    - messaging
-    - moa
-    - session_search
-    - skills
-    - terminal
-    - todo
-    - tts
-    - vision
-    - web
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - memory
+  - messaging
+  - moa
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+  slack:
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - memory
+  - messaging
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+platforms:
+  slack:
+    enabled: true
 plugins:
   hermes-memory-store:
-    auto_extract: "true"
+    auto_extract: 'true'
     db_path: ~/.hermes/profiles/gintary/memory_store.db
-    default_trust: "0.5"
-    hrr_dim: "1024"
-prefill_messages_file: ""
+    default_trust: '0.5'
+    hrr_dim: '1024'
+prefill_messages_file: ''
 privacy:
   redact_pii: false
 profile:
@@ -414,8 +436,8 @@ secrets:
     cache_ttl_seconds: 300
     enabled: false
     override_existing: true
-    project_id: ""
-    server_url: ""
+    project_id: ''
+    server_url: ''
 security:
   acked_advisories: []
   allow_lazy_installs: true
@@ -445,9 +467,9 @@ skills:
   template_vars: true
   write_approval: false
 slack:
-  allowed_channels: ""
+  allowed_channels: ''
   channel_prompts: {}
-  free_response_channels: ""
+  free_response_channels: ''
   require_mention: true
 streaming:
   buffer_threshold: 24
@@ -459,12 +481,12 @@ streaming:
 stt:
   elevenlabs:
     diarize: false
-    language_code: ""
+    language_code: ''
     model_id: scribe_v2
     tag_audio_events: false
   enabled: true
   local:
-    language: ""
+    language: ''
     model: base
   mistral:
     model: voxtral-mini-latest
@@ -472,7 +494,7 @@ stt:
     model: whisper-1
   provider: local
 telegram:
-  allowed_chats: ""
+  allowed_chats: ''
   channel_prompts: {}
   reactions: false
 terminal:
@@ -498,7 +520,7 @@ terminal:
   shell_init_files: []
   singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
   timeout: 180
-timezone: ""
+timezone: ''
 tool_loop_guardrails:
   hard_stop_after:
     exact_failure: 5
@@ -521,7 +543,7 @@ tools:
     search_default_limit: 5
     threshold_pct: 10
 toolsets:
-  - hermes-cli
+- hermes-cli
 tts:
   edge:
     voice: en-US-AriaNeural
@@ -531,7 +553,7 @@ tts:
   gemini:
     audio_tags: false
     model: gemini-2.5-flash-preview-tts
-    persona_prompt_file: ""
+    persona_prompt_file: ''
     voice: Kore
   mistral:
     model: voxtral-mini-tts-2603
@@ -539,8 +561,8 @@ tts:
   neutts:
     device: cpu
     model: neuphonic/neutts-air-q4-gguf
-    ref_audio: ""
-    ref_text: ""
+    ref_audio: ''
+    ref_text: ''
   openai:
     model: gpt-4o-mini-tts
     voice: alloy
@@ -564,9 +586,9 @@ voice:
   silence_duration: 3.0
   silence_threshold: 200
 web:
-  backend: ""
-  extract_backend: ""
-  search_backend: ""
+  backend: ''
+  extract_backend: ''
+  search_backend: ''
 whatsapp: {}
 x_search:
   model: grok-4.20-reasoning
