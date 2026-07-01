@@ -1,5 +1,5 @@
 name: gintary
-version: 1.0.2
+version: 1.0.3
 description: Autonomous secretary assistant
 hermes_requires: ">=0.12.0"
 author: Gin
